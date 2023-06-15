@@ -17,11 +17,16 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami = "ami-022e1a32d3f742bd8" // Amazon Linux 2023 AMI
+  ami = "ami-053b0d53c279acc90" // Ubuntu Server 22.04 LTS
   instance_type = "t2.micro"
   key_name = "alura"
+#   user_data = <<EOF
+#               #!/bin/bash
+#               echo "<h1>Hello World</h1>" > index.html
+#               nohup busybox httpd -f -p 8080 &
+#               EOF
 
   tags = {
-    Name = "Primeira instancia com Terraform"
+    Name = "Terraform Ansible Python"
   }
 }
