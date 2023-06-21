@@ -43,3 +43,5 @@ terraform.rc
 *.pub
 alura-separando-ambientes-aws/env/dev/IaC-Dev
 alura-separando-ambientes-aws/env/prod/IaC-Prod
+alura-infraestrutura-elastica/env/dev/IaC-Dev
+alura-infraestrutura-elastica/env/prod/Iac-Prod
