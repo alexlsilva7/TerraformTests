@@ -44,6 +44,33 @@ resource "aws_autoscaling_group" "auto_scaling_group" {
   target_group_arns = var.producao ? [aws_lb_target_group.target_group[0].arn] : []
 }
 
+resource "aws_autoscaling_schedule" "on" {
+  scheduled_action_name = "on"
+  min_size = 0
+  max_size = 1
+  desired_capacity = 1
+  # start at 7am
+  recurrence = "0 7 * * MON-FRI"
+  start_time = timeadd(timestamp(), "3m")
+  time_zone = "America/Sao_Paulo"
+
+  autoscaling_group_name = aws_autoscaling_group.auto_scaling_group.name
+}
+
+resource "aws_autoscaling_schedule" "off" {
+  scheduled_action_name = "off"
+  min_size = 0
+  max_size = 0
+  desired_capacity = 0
+
+  # stop at 6pm
+  recurrence = "0 18 * * MON-FRI"
+  start_time = timeadd(timestamp(), "4m")
+  time_zone = "America/Sao_Paulo"
+
+  autoscaling_group_name = aws_autoscaling_group.auto_scaling_group.name
+}
+
 resource "aws_default_subnet" "subnet_1" {
   availability_zone = "${var.regiao_aws}a"
 }
