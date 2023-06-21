@@ -13,10 +13,15 @@
         name:
           - django
           - djangorestframework
-
+  
+    - name: verificando se o projeto já existe
+      stat:
+        path: /home/ubuntu/setup/settings.py
+      register: setup_exists
+      
     - name: iniciando aplicação
       shell: '. /home/ubuntu/venv/bin/activate; django-admin startproject setup /home/ubuntu/'
-      ignore_errors: yes #ignorando erro de diretório já existente
+      when: not setup_exists.stat.exists
     - name: alterando o hosts do settings
       lineinfile:
         path: /home/ubuntu/setup/settings.py
