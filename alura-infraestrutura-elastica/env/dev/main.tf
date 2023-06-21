@@ -4,8 +4,10 @@ module "aws-dev" {
   regiao_aws = "us-east-1"
   chave = "Iac-Dev"
   security_group_name = "acesso_geral_dev"
-}
 
-output "ip_publico_dev" {
-  value = module.aws-dev.ip_publico
+  auto_scaling_group_name = "Dev"
+  max_size = 1
+  min_size = 0
+
+  producao = false
 }

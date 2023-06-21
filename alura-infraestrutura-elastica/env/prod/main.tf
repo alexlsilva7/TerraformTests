@@ -4,8 +4,10 @@ module "aws-prod" {
   regiao_aws = "us-east-1"
   chave = "Iac-Prod"
   security_group_name = "acesso_geral_prod"
-}
 
-output "ip_publico_prod" {
-  value = module.aws-prod.ip_publico
+  auto_scaling_group_name = "Prod"
+  max_size = 10
+  min_size = 1
+
+  producao = true
 }
