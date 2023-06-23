@@ -1,3 +1,3 @@
 resource "aws_ecr_repository" "repository" {
-  name = var.name
+  name = var.repository_name
 }
