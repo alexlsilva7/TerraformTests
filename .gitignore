@@ -46,3 +46,4 @@ alura-separando-ambientes-aws/env/prod/IaC-Prod
 alura-infraestrutura-elastica/env/dev/IaC-Dev
 alura-infraestrutura-elastica/env/prod/Iac-Prod
 alura-infraestrutura-elastica/__pycache__/carga.cpython-310.pyc
+.terraform.lock.hcl
