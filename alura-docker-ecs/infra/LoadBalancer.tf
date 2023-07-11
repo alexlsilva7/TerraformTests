@@ -1,6 +1,5 @@
 resource "aws_lb" "load_balancer" {
   name               = "alura-docker-ecs-django"
-  load_balancer_type = "application"
   security_groups    = [aws_security_group.load_balancer.id]
   subnets            = module.vpc.public_subnets
 }
