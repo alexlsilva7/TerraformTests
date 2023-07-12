@@ -1,0 +1,1 @@
+# Aplicação de treino para o curso Infraestrutura como código: Terraform e Kubernets (https://cursos.alura.com.br/course/infraestrutura-codigo-terraform-kubernetes)
