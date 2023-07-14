@@ -51,3 +51,29 @@ resource "kubernetes_deployment" "Django-API" {
     }
   }
 }
+
+resource "kubernetes_service" "LoadBalancer" {
+  metadata {
+    name = "django-api"
+  }
+  spec {
+    selector = {
+      app = "django-api"
+    }
+    port {
+      port = 8000
+      target_port = 8000
+    }
+    type = "LoadBalancer"
+  }
+}
+
+data "kubernetes_service" "DNSname" {
+  metadata {
+    name = "django-api"
+  }
+}
+
+output "URL" {
+  value = data.kubernetes_service.DNSname.status
+}
